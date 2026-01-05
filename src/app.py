@@ -13,6 +13,8 @@ from api.commands import setup_commands
 
 # from models import Person
 
+from flask_jwt_extended import JWTManager
+
 ENV = "development" if os.getenv("FLASK_DEBUG") == "1" else "production"
 static_file_dir = os.path.join(os.path.dirname(
     os.path.realpath(__file__)), '../dist/')
@@ -40,7 +42,9 @@ setup_commands(app)
 # Add all endpoints form the API with a "api" prefix
 app.register_blueprint(api, url_prefix='/api')
 
-# Handle/serialize errors like a JSON object
+
+app.config["JWT_SECRET_KEY"] = "12345"
+jwt = JWTManager(app)
 
 
 @app.errorhandler(APIException)
