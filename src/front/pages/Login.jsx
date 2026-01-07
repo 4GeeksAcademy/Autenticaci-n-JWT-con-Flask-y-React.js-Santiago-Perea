@@ -15,10 +15,11 @@ export const Login = () => {
         })
            
         if (!resp.ok) {
-            alert("Error en inicio de sesión");
+            setEmail(""), setPassword("")
+            return alert("Error en inicio de sesión")
         }
            
-        //setEmail(""), setPassword("")
+        // setEmail(""), setPassword("")
         const token = await resp.json();
 
         sessionStorage.setItem("token", token.access_token);
@@ -45,6 +46,5 @@ export const Login = () => {
                 </div>
             </form>
         </div>
-
     )
 }

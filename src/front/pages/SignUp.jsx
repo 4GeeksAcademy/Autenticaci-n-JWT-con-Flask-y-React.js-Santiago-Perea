@@ -19,8 +19,9 @@ export const SignUp = () => {
                 } else {
                     alert("Error");
                 }
+                
             })
-        // setEmail(""), setUsername(""), setPassword("")
+        setEmail(""), setUsername(""), setPassword("")
     };
 
 
