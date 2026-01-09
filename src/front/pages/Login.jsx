@@ -8,12 +8,15 @@ export const Login = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        const resp = await fetch('https://bookish-yodel-r4v7p64v5q462jrj-3001.app.github.dev/api/login', {
+        const resp = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/login`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, password })
         })
            
+        console.log("Status:", resp.status);
+        console.log("OK:", resp.ok);
+
         if (!resp.ok) {
             setEmail(""), setPassword("")
             return alert("Error en inicio de sesión")

@@ -8,16 +8,16 @@ export const SignUp = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        fetch('https://bookish-yodel-r4v7p64v5q462jrj-3001.app.github.dev/api/signup', {
+        fetch(`${import.meta.env.VITE_BACKEND_URL}/api/signup`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, username, password })
         })
         .then((response) => {
-                if (response.ok) {
-                    alert("User created");
-                } else {
-                    alert("Error");
+            if (response.ok) {
+                alert("User created");
+            } else {
+                alert("Error");
                 }
                 
             })
